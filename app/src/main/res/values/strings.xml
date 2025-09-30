@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Ticker Watchlist Manager</string>
+    <string name="ticker_info">Ticker Info</string>
+    <string name="ticker_list">Ticker List</string>
+</resources>
