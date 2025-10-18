@@ -15,10 +15,11 @@ import java.util.ArrayList;
 
 public class TickerListFragment extends Fragment {
 
+    private String ticker;
+
     public interface OnTickerClickListener {
         void onTickerClicked(String symbol);
-
-        void onNewIntent(Intent intent);
+        
     }
 
     private OnTickerClickListener listener;
