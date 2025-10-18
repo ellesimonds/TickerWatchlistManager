@@ -21,7 +21,6 @@ public class InfoWebFragment extends Fragment {
         webView = view.findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
 
-        // Load default SeekingAlpha page
         webView.loadUrl("https://seekingalpha.com");
 
         return view;
