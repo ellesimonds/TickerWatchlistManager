@@ -11,8 +11,6 @@ import com.example.tickerwatchlistmanager.MainActivity;
 
 public class SmsReceiver extends BroadcastReceiver {
     private static final String TAG = "SmsReceiver";
-
-    // Intent extras keys (choose same keys in MainActivity)
     public static final String EXTRA_TICKER = "extra_ticker";
     public static final String EXTRA_OPEN_IMMEDIATE = "extra_open_immediate";
     public static final String EXTRA_TOAST = "extra_toast";
@@ -36,17 +34,17 @@ public class SmsReceiver extends BroadcastReceiver {
             String fullMessage = sb.toString();
             Log.d(TAG, "Received SMS: " + fullMessage);
 
-            // Try to extract ticker
+            //try to extract ticker
             String ticker = parseTickerFromMessage(fullMessage);
             Intent start = new Intent(context, MainActivity.class);
             start.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
             if (ticker == null) {
-                // Not in correct format -> launch activity and show toast
+                //not in correct format -> launch activity and show toast
                 start.putExtra(EXTRA_TOAST, "No valid watchlist entry found in SMS");
                 context.startActivity(start);
             } else {
-                // Validate ticker content (letters only)
+                //validate ticker content (letters only)
                 String normalized = ticker.toUpperCase();
                 if (isValidTicker(normalized)) {
                     start.putExtra(EXTRA_TICKER, normalized);
@@ -60,12 +58,10 @@ public class SmsReceiver extends BroadcastReceiver {
         }
     }
 
-    // Extracts Ticker from patterns like: Ticker:<<BAC>> or ticker:<<Main>>
+
     private String parseTickerFromMessage(String msg) {
         if (msg == null) return null;
 
-        // Look for "Ticker:<<...>>" case-insensitive and allow optional spaces
-        // Simple index-based parse is robust for this assignment
         String lower = msg.toLowerCase();
         int idx = lower.indexOf("ticker:");
         if (idx == -1) return null;
@@ -80,7 +76,6 @@ public class SmsReceiver extends BroadcastReceiver {
         return inner;
     }
 
-    // Valid ticker: letters only A-Z (after uppercase)
     private boolean isValidTicker(String t) {
         return t.matches("^[A-Z]+$");
     }
