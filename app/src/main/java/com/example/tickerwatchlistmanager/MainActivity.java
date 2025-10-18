@@ -26,7 +26,7 @@ import com.example.tickerwatchlistmanager.ui.SmsReceiver;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class MainActivity extends AppCompatActivity implements TickerListFragment.OnTickerClickListener {
+public abstract class MainActivity extends AppCompatActivity implements TickerListFragment.OnTickerClickListener {
 
     private InfoWebFragment infoWebFragment;
     private static final int REQ_SMS_PERM = 1001;

@@ -29,7 +29,7 @@ public class InfoWebFragment extends Fragment {
 
     public void loadTickerInfo(String symbol) {
         if (webView != null) {
-            String url = "https://seekingalpha.com/symbol/" + symbol;
+            String url = "https://seekingalpha.com/symbol/" + symbol.toUpperCase();
             webView.loadUrl(url);
         }
     }
