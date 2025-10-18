@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
 
@@ -15,6 +17,8 @@ public class TickerListFragment extends Fragment {
 
     public interface OnTickerClickListener {
         void onTickerClicked(String symbol);
+
+        void onNewIntent(Intent intent);
     }
 
     private OnTickerClickListener listener;
@@ -56,14 +60,12 @@ public class TickerListFragment extends Fragment {
 
         return view;
     }
-
-    //call this to add a new ticker (replaces 6th if needed)
+    
     public void addTicker(String symbol) {
-        if (tickers.size() < 6) {
-            tickers.add(symbol);
-        } else {
-            tickers.set(5, symbol); // replace 6th
-        }
-        adapter.notifyDataSetChanged();
+
+        // TODO: Add the ticker to your list or adapter if you have one
+        Toast.makeText(getContext(), "Ticker added: " + ticker, Toast.LENGTH_SHORT).show();
     }
+
+
 }

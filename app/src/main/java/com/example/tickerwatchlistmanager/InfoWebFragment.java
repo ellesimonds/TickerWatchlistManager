@@ -29,9 +29,9 @@ public class InfoWebFragment extends Fragment {
 
     public void loadTickerInfo(String symbol) {
         if (webView != null) {
-            // Build the URL for the ticker (simple string concatenation)
             String url = "https://seekingalpha.com/symbol/" + symbol;
             webView.loadUrl(url);
         }
     }
+
 }
